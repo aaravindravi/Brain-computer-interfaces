@@ -17,7 +17,4 @@ In IEEE Systems, Man and Cybernetics Conference 2019.
 Dataset Reference:
 12-Class publicly available SSVEP EEG Dataset
 Dataset URL: https://github.com/mnakanishi/12JFPM_SSVEP/tree/master/data
-Paper: Masaki Nakanishi, Yijun Wang, Yu-Te Wang and Tzyy-Ping Jung, 
-"A Comparison Study of Canonical Correlation Analysis Based Methods for Detecting Steady-State Visual Evoked Potentials," 
-PLoS One, vol.10, no.10, e140703, 2015. 
 
