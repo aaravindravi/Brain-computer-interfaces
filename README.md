@@ -1,5 +1,9 @@
 # Brain-computer-interfaces
 
+Steady State Visual Evoked Potentials (SSVEP) BCI Classification using:
+1. Canonical Correlation Analysis (CCA)
+2. Magnitude Spectrum Features and Convolutional Neural Networks (M-CNN)
+
 Request to please Cite the following References if you found this code helpful:
 
 Ravi, A., Manuel, J., Heydari, N., & Jiang, N. A Convolutional Neural Network for 
