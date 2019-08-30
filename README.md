@@ -2,7 +2,7 @@
 
 Steady State Visual Evoked Potentials (SSVEP) BCI Classification using:
 1. Canonical Correlation Analysis (CCA)
-2. Magnitude Spectrum Features and Convolutional Neural Networks (M-CNN)
+2. Magnitude Spectrum Features and Convolutional Neural Networks (M-CNN)  (Jupyter Notebook version coming soon...)
 
 Request to please Cite the following References if you found this code helpful:
 
