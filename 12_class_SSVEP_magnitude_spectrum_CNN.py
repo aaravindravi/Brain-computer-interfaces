@@ -13,7 +13,7 @@ from keras.utils.np_utils import to_categorical
 from keras import optimizers
 from keras.losses import categorical_crossentropy
 
-from ssvep_utils import *
+import ssvep_utils as su
 
 CNN_PARAMS = {
     'batch_size': 64,
@@ -38,7 +38,7 @@ all_acc = np.zeros((10, 1))
 
 for subject in range(0, 10):
 
-    dataset = sio.loadmat('s'+str(subject+1)+'.mat')
+    dataset = sio.loadmat(f'data/s{subject+1}.mat')
     eeg = np.array(dataset['eeg'], dtype='float32')
     
     CNN_PARAMS['num_classes'] = eeg.shape[0]
@@ -47,15 +47,16 @@ for subject in range(0, 10):
     num_trials = eeg.shape[3]
     sample_rate = 256
 
-    filtered_data = get_filtered_eeg(eeg, 6, 80, 4, sample_rate)
+    filtered_data = su.get_filtered_eeg(eeg, 6, 80, 4, sample_rate)
     eeg = []
 
-    window_len = 1; shift_len = 1
+    window_len = 1
+    shift_len = 1
     
-    segmented_data = get_segmented_epochs(filtered_data, window_len, shift_len, sample_rate)
+    segmented_data = su.get_segmented_epochs(filtered_data, window_len, shift_len, sample_rate)
     filtered_data = []
     
-    features_data = magnitude_spectrum_features(segmented_data, FFT_PARAMS)
+    features_data = su.magnitude_spectrum_features(segmented_data, FFT_PARAMS)
     segmented_data = []
     
     #Combining the features into a matrix of dim [features X channels X classes X trials*segments]
@@ -91,7 +92,7 @@ for subject in range(0, 10):
         fold = fold + 1
         print("Subject:", subject+1, "Fold:", fold+1, "Training...")
         
-        model = CNN_model(input_shape, CNN_PARAMS)
+        model = su.CNN_model(input_shape, CNN_PARAMS)
         
         sgd = optimizers.SGD(lr=CNN_PARAMS['learning_rate'], decay=CNN_PARAMS['lr_decay'], 
                              momentum=CNN_PARAMS['momentum'], nesterov=False)
